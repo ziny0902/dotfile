@@ -1,0 +1,4 @@
+alias ls="ls -a --color=tty"
+alias cat="bat"
+alias vi="nvim"
+alias tmux="tmux -f ~/Documents/env/dotfile/.tmux.conf"
