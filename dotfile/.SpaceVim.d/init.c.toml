@@ -8,6 +8,8 @@
 
 # All SpaceVim option below [option] section
 [options]
+    bootstrap_before = 'option#before'
+    bootstrap_after  = "option#after"
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
@@ -25,13 +27,25 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = true
+    project_rooter_automatically = true
 
 
-# Enable autocomplete layer
+# Enable layers {{{
+[[layers]]
+name = 'default'
+
 [[layers]]
 name = 'autocomplete'
 auto_completion_return_key_behavior = "complete"
 auto_completion_tab_key_behavior = "smart"
+autocomplete_method = "coc"
+
+[[layers]]
+  name = "lsp"
+  filetypes = [
+    "c",
+    "cpp"
+  ]
 
 [[layers]]
 name = 'shell'
@@ -50,6 +64,23 @@ name = "fzf"
 [[layers]]
 name = "lang#markdown"
 
+[[layers]]
+name = "lang#c"
+  [layer.clang_std]
+      cpp = "c11"
+
+[[layers]]
+name = "debug"
+
+[[layers]]
+  name = "checkers"
+
+[[layers]]
+  name = "tmux"
+#}}}
+
+# Enable custom plugins {{{
+
 [[custom_plugins]]
 repo = "dracula/vim"
 name = "dracula"
@@ -64,3 +95,5 @@ merged = false
 repo = "masukomi/vim-markdown-folding"
 name = "markdown-folding"
 merged = false
+
+# }}}

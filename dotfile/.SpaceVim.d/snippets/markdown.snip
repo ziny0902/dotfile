@@ -1,0 +1,62 @@
+snippet math_block
+abbr $$ .. $$
+options word
+    $$
+    ${1:formula}
+    $$
+
+snippet math_inline
+abbr $ .. $
+options word
+    $${1:formula}$
+
+snippet frac 
+abbr \frac{...}{...}
+options word
+    \frac{${1:num}}{${2:denominator}}
+
+snippet partial_derivative
+abbr \frac{\partial ...}{\partial ...}
+options word
+    \frac{\partial ${1:num} }{\partial ${2:denominator}}
+
+snippet integral 
+abbr \int_{}^{}
+options word
+    \int_{${1:a}}^{${2:b}}
+
+snippet matrix_2X2
+abbr \left[\begin ... \end]\right]
+options word
+    \left[
+    \begin{array}{ccc}
+    ${1} & ${2} \\
+    ${3} & ${4} 
+    \end{array}
+    \right]
+
+snippet matrix_3X3
+abbr \left[\begin ... \end]\right]
+options word
+    \left[
+    \begin{array}{ccc}
+    ${1} & ${2} & ${2} \\
+    ${4} & ${5} & ${6} \\
+    ${7} & ${8} & ${9} 
+    \end{array}
+    \right]
+
+snippet square_root
+abbr \sqrt[n]{x}
+options word
+    \sqrt[${1}]{${2}}
+
+snippet limit
+abbr \lim_{x\to \infty}
+options word
+    \lim_{${1:x}\to \infty}
+
+snippet sum
+abbr \sum_{n=1}^{\infty}a_n
+options word
+    \sum_{${1:n}=${2:1}}^{\infty}${3:a}_${4:n}

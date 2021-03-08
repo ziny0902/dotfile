@@ -31,6 +31,8 @@ export XDG_CONFIG_HOME="$HOME"'/.config/'
 export XDG_DATA_HOME="$HOME"'/.local/share'
 export XDG_CACHE_HOME="$HOME"'/.cache'
 
+export EDITOR="vim -u NONE"
+
 # fzf
 export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
 export FZF_DEFAULT_OPTS='--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'

@@ -1,0 +1,142 @@
+set nocompatible              " be iMproved, required
+
+
+filetype off                   " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/Documents/env/dotfile/.vim_min/Vundle.vim
+
+call vundle#begin('~/Documents/env/dotfile/.vim_min')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-utils/vim-man'
+Plugin 'jremmen/vim-ripgrep'
+Plugin 'mbbill/undotree'
+Plugin 'preservim/tagbar'
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" basic CtrlP
+" c-f, c-b mode change
+" c-k, c-j up down key
+" open selected entry
+" new tab          new split
+" c-t or c-v       c-x
+Plugin 'ctrlpvim/ctrlp.vim'
+
+
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+Plugin 'dracula/vim', { 'name': 'dracula' }
+Plugin 'flazz/vim-colorschemes'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+exec 'set rtp+=~/Documents/env/dotfile/.vim_min/after/'
+
+filetype plugin indent on    " required
+
+
+"set rtp+=/usr/share/vim/current
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax enable
+colorscheme gruvbox
+set background=dark
+
+set t_Co=256
+
+" Set utf8 as standard encoding and en_US as the standard language
+scriptencoding utf-8
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Show Relative line number
+set rnu
+set nu
+
+set tabstop=2 softtabstop=2
+set shiftwidth=2
+set expandtab
+set hidden
+set smartindent
+set nowrap
+set noswapfile
+set nobackup
+set undodir=~/Documents/env/dotfile/.vim_min/undodir
+set undofile
+set incsearch
+set nohlsearch
+set scrolloff=4
+set colorcolumn=80
+set signcolumn=yes
+
+" CtrlP maping
+let g:ctrlp_cmd = 'CtrlPBuffer' "buffer mode
+
+" undotree
+nnoremap <F5> :UndotreeToggle<CR>
+
+" vim-rtags
+let g:rtagsRcCmd ='/usr/bin/rc'
+let g:rtagsLog = '~/Documents/env/dotfile/rtags.log'
+
+" vim-ripgrep
+" :Rg
+if executable('rg')
+  let g:rg_derive_root='true'
+endif
+
+" NERDTree option.
+map <F3> :NERDTreeToggle<CR>
+
+" set airline theme
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dracula'
+
+" set custom statusline
+set laststatus=2
+
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf(' +%d ~%d -%d ', a, m, r)
+endfunction
+"
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=%#CursorLine#
+set statusline+=\ %t\ 
+set statusline+=%#Visual#
+set statusline+=\ %n\ 
+set statusline+=\ %m\ 
+set statusline+=%#PmenuSel#
+set statusline+=%{GitStatus()}
+set statusline+=%#LineNr#
+set statusline+=%=
+set statusline+=%y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+hi Normal guibg=NONE ctermbg=NONE
+" Automatically removing all trailing whitespace
+" autocmd BufWritePre * %s/\s\+$//e

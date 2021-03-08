@@ -32,4 +32,4 @@ export QT_IM_MODULE=ibus
 
 set -o vi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.config/fzf/.fzf.bash ] && source ~/.config/fzf/.fzf.bash

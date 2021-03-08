@@ -101,6 +101,6 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey -v
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.config/fzf/.fzf.zsh ] && source ~/.config/fzf/.fzf.zsh
 
 source $HOME/.alias
